@@ -9,6 +9,12 @@ auto print_value_op(nlohmann::json const & json, char const * key)
     std::cout << val << '\n';
 }
 
+auto print_value_at(nlohmann::json const & json, char const * key)
+{
+    auto const val = json.at(key).get<std::string>();
+    std::cout << val << '\n';
+}
+
 int main()
 {
     auto const json =
@@ -20,8 +26,8 @@ int main()
 
     try
     {
-        print_value_op(json, "key");
-        print_value_op(json, "missing");
+        print_value_at(json, "key");
+        print_value_at(json, "missing");
     }
     catch (std::exception const & e)
     {
