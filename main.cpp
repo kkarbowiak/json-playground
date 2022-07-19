@@ -3,6 +3,12 @@
 #include <stdexcept>
 
 
+auto print_value_op(nlohmann::json const & json, char const * key)
+{
+    auto const val = json[key].get<std::string>();
+    std::cout << val << '\n';
+}
+
 int main()
 {
     auto const json =
@@ -14,8 +20,8 @@ int main()
 
     try
     {
-        auto const val = json["key"].get<std::string>();
-        std::cout << val << '\n';
+        print_value_op(json, "key");
+        print_value_op(json, "missing");
     }
     catch (std::exception const & e)
     {
