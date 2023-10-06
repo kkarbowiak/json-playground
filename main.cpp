@@ -59,9 +59,22 @@ auto check_null()
     }
 }
 
+auto print_val()
+{
+    auto json =
+    R"(
+    {
+      "val": 2.1
+    }
+    )"_json;
+
+    std::cout << "val as int: " << json["val"].get<int>() << '\n';
+    std::cout << "val as dbl: " << json["val"].get<double>() << '\n';
+}
+
 int main()
 {
-    check_null();
+    print_val();
     return 0;
 
     auto const json =
